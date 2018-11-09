@@ -1,0 +1,7 @@
+{
+  "name": "TheMovieDB",
+  "private": true,
+  "dependencies": {
+    "dotenv": "^6.1.0"
+  }
+}

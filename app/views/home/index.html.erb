@@ -1,0 +1,41 @@
+<div class="text-white bg-dark" style="border-radius: 15px;padding: 1%; background-color: white; color: black; margin: 0 auto; width: 50%; margin-top: 70px;">
+<h1 style="font-size: 20px; font-family: Arial, Helvetica, sans-serif;">Welcome, type the name of a movie to get informations about it :)</h1>
+</div>
+<br>
+<form method="post" style="margin: 0 auto; width: 50%;">
+    <div  class="input-group">
+      <input type="text" name="search" class="form-control" placeholder="Title of movie ..." />
+    </div>
+    <br>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <button type="submit" style="margin-left: 25%; width: 50%;" class="btn btn-success">Search</button>
+  </form>
+
+<br>
+
+<div>
+
+  	<% if @search %>
+  		<div style="margin-left: 100px; margin-right: 100px;" class="card-header text-white bg-dark mb-3">
+  			<%= (@movie.count).to_s + " results for " + '"' + @search + '"'%> 
+  		</div>
+		<% @movie.each do |form| %>
+		<div style="margin-left: 100px; margin-right: 100px;" class="card text-white bg-dark mb-3">
+ 			 <div class="card-header"><%= form[:title] %></div>	
+				<div class="card-body">
+						<p>Released in :</p>
+						<strong><%= form[:date] %></strong>
+						<br>
+						<br>
+						<p">Directed by :</p>
+						<strong><%= form[:director] %></strong>
+						<br>
+						<img style="border-radius: 15px;" src="<%= form[:image] %>" alt="mon-image"/>
+						<br>
+				</div>
+			</div>
+			<br>
+			<br>
+		<% end %>
+	<% end %>
+</div>
